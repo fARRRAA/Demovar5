@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Demovar5.Pages;
 
 namespace Demovar5
 {
@@ -23,6 +24,13 @@ namespace Demovar5
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new SignInPage(this));
+        }
+
+        public void ChangeWindowSize(double height, double width)
+        {
+            this.Height = height;
+            this.Width = width;
         }
     }
 }

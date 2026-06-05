@@ -1,0 +1,24 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Основные стили согласно требованиям -->
+    <Style x:Key="CalibriTextBlock" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Calibri"/>
+    </Style>
+    
+    <Style x:Key="HeaderTextBlock" TargetType="TextBlock" BasedOn="{StaticResource CalibriTextBlock}">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    
+    <!-- Стиль для карточки товара -->
+    <Style x:Key="ProductCardStyle" TargetType="Border">
+        <Setter Property="BorderBrush" Value="#CCCCCC"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Background" Value="White"/>
+    </Style>
+    
+</ResourceDictionary>

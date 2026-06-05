@@ -1,0 +1,50 @@
+<Page x:Class="Demovar5.Pages.Client.ClientPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Demovar5.Pages.Client"
+      xmlns:hc="https://handyorg.github.io/handycontrol"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1024"
+      Title="Личный кабинет клиента" 
+      Background="White">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Шапка -->
+        <Border Grid.Row="0" Background="#00FFFF" Padding="20">
+            <Grid>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Image Source="/Resources/Images/icon.png" Width="50" Height="50" Margin="0,0,15,0"/>
+                    <TextBlock Text="МебельОрг - Личный кабинет" 
+                               FontFamily="Calibri"
+                               FontSize="24" 
+                               FontWeight="Bold" 
+                               VerticalAlignment="Center"
+                               Foreground="#0000FF"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="{Binding UserFullName}" 
+                               FontFamily="Calibri"
+                               FontSize="16" 
+                               VerticalAlignment="Center" 
+                               Margin="0,0,15,0"/>
+                    <Button x:Name="LogoutBtn" 
+                            Content="Выход" 
+                            Width="100" 
+                            Height="35"
+                            Click="LogoutBtn_Click"
+                            Style="{StaticResource ButtonPrimary}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Контент -->
+        <Frame Grid.Row="1" x:Name="ContentFrame" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Page>

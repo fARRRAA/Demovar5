@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9e23733a65c8495ebcf60c430165bc8b" Name="Diagram1">
+        <EntityTypeShape EntityType="demovar5Model.Categories" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="demovar5Model.Manufacturers" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="demovar5Model.OrderProducts" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="demovar5Model.Orders" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="demovar5Model.PickupPoints" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="demovar5Model.Products" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="demovar5Model.Roles" Width="1.5" PointX="1.5" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="demovar5Model.Suppliers" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="demovar5Model.Units" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="demovar5Model.Users" Width="1.5" PointX="0.75" PointY="15.125" IsExpanded="true" />
+        <AssociationConnector Association="demovar5Model.FK_Products_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="demovar5Model.FK_Products_Manufacturers" ManuallyRouted="false" />
+        <AssociationConnector Association="demovar5Model.FK_OrderProducts_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="demovar5Model.FK_OrderProducts_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="demovar5Model.FK_Orders_PickupPoints" ManuallyRouted="false" />
+        <AssociationConnector Association="demovar5Model.FK_Orders_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="demovar5Model.FK_Products_Suppliers" ManuallyRouted="false" />
+        <AssociationConnector Association="demovar5Model.FK_Products_Units" ManuallyRouted="false" />
+        <AssociationConnector Association="demovar5Model.FK_Users_Roles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
