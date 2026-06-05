@@ -1,0 +1,53 @@
+﻿<Window x:Class="BeautySalonWpf.WindowDialogs.RedactAdmin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BeautySalonWpf.WindowDialogs"
+              xmlns:hc="https://handyorg.github.io/handycontrol"
+WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="Редактирование администратора" Height="650" Width="850">
+    <Grid  Background="{DynamicResource BackgroundBrush}">
+        <StackPanel Orientation="Horizontal" >
+            <StackPanel Margin="20,20,0,0">
+                <hc:TextBox x:Name="LNameText" hc:InfoElement.ShowClearButton="True" hc:InfoElement.Title="Фамилия" Width="250" FontSize="16" Height="70" Margin="0,20,0,0" hc:InfoElement.Placeholder="Введите фамилию" />
+                <hc:TextBox  x:Name="FNameText" hc:InfoElement.ShowClearButton="True" hc:InfoElement.Title="Имя" Width="250" FontSize="16" Height="70" Margin="0,20,0,0" hc:InfoElement.Placeholder="Введите имя" />
+                <hc:TextBox  x:Name="PatronymicText" hc:InfoElement.ShowClearButton="True" hc:InfoElement.Title="Отчество" Width="250" FontSize="16" Height="70" Margin="0,20,0,0" hc:InfoElement.Placeholder="Введите имя" />
+                <hc:DatePicker x:Name="DateBirthText" hc:InfoElement.ShowClearButton="True" Height="70"  hc:InfoElement.Title="Дата рождения" FontSize="16" Margin="0,20,0,0" hc:InfoElement.Placeholder="Введите дату рождения"/>
+                <hc:TextBox x:Name="PhoneText" MaxLength="12" hc:InfoElement.ShowClearButton="True" Width="250" Height="70" FontSize="16" hc:InfoElement.Title="Номер телефона" Margin="0,20,0,0" hc:InfoElement.TitleWidth="140" hc:InfoElement.Placeholder="Введите номер телефона" hc:InfoElement.TitlePlacement="Top"/>
+            </StackPanel>
+            <StackPanel Margin="20,20,0,0">
+                <StackPanel>
+                    <hc:TextBox  x:Name="EmailText" hc:InfoElement.ShowClearButton="True" hc:InfoElement.Title="Почта" Width="250" FontSize="16" Height="70" Margin="0,20,0,0" hc:InfoElement.Placeholder="Введите почту" />
+                    <hc:TextBox  x:Name="LoginText" hc:InfoElement.ShowClearButton="True" hc:InfoElement.Title="Логин" Width="250" FontSize="16" Height="70" Margin="0,20,0,0" hc:InfoElement.Placeholder="Введите логин" />
+                    <hc:PasswordBox x:Name="PasswordText" ShowEyeButton="True" hc:InfoElement.Placeholder="Введите пароль" Height="70" hc:InfoElement.Title="Пароль" FontSize="16" Margin="0,20,0,0" Width="250"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,230,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="CloseRedactBtn" Content="Закрыть" FontSize="15" Height="37" Click="CloseRedactBtn_Click" Width="128" Padding="10,0,10,0"></Button>
+                        <Button x:Name="ConfirmRedactBtn" Content="Подтвердить" Margin="10,0,0,0" FontSize="15" Height="37" Width="128" Padding="10,0,10,0" Click="ConfirmRedactBtn_Click"></Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="40,40,0,0">
+                <Border BorderThickness="1,1,1,1">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFF8000" Offset="1"/>
+                            <GradientStop Color="#FF2DB84D" />
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                    <Image x:Name="Photo" Width="200" Height="200"/>
+                </Border>
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0" HorizontalAlignment="Center">
+                    <!--<Button x:Name="deletePhoto" Content="Удалить" FontSize="14" Height="35"  Style="{StaticResource ButtonDashedDanger}" Click="deletePhoto_Click"/>-->
+                    <Button x:Name="addPhoto" Content="Добавить"   FontSize="14" Height="35" Style="{StaticResource ButtonDashedSuccess}" Margin="0,0,0,0" Click="addPhoto_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right">
+            <StackPanel hc:Growl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>
+        </ScrollViewer>
+    </Grid>
+</Window>

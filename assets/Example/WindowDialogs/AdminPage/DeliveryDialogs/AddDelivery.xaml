@@ -1,0 +1,32 @@
+﻿<Window x:Class="BeautySalonWpf.WindowDialogs.AdminPage.DeliveryDialogs.AddDelivery"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BeautySalonWpf.WindowDialogs.AdminPage.DeliveryDialogs"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="AddDelivery" Height="550" Width="600">
+    <Grid  Background="{DynamicResource BackgroundBrush}">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+            <StackPanel Margin="0,20,0,0" HorizontalAlignment="Center">
+                <StackPanel HorizontalAlignment="Center" >
+                    <ComboBox x:Name="ProductText" ItemsSource="{Binding _products}" SelectedIndex="0" hc:InfoElement.Title="Товар" Style="{StaticResource ComboBoxExtend}" Height="70" Width="250"  Margin="0,20,0,0" FontSize="16"  Text="Специализация"/>
+                    <ComboBox x:Name="ProviderText" ItemsSource="{Binding _providers}" SelectedIndex="0" hc:InfoElement.Title="Поставщик" Style="{StaticResource ComboBoxExtend}" Height="70" Margin="0,20,0,0"  Width="250" FontSize="16"  Text="Мастерство"/>
+                    <hc:DatePicker x:Name="DateText" hc:InfoElement.ShowClearButton="True" Height="70"  hc:InfoElement.Title="Дата" FontSize="16" Margin="0,20,0,0" hc:InfoElement.Placeholder="Введите дату "/>
+                    <hc:NumericUpDown x:Name="CountText" Value="1" Height="70" hc:InfoElement.TitlePlacement="Top" Margin="0,20,0,0" FontSize="16" hc:InfoElement.Title="Количество" Style="{StaticResource NumericUpDownExtend}"/>                    
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,50,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="CloseAddBtn" Content="Отмена" FontSize="15" Height="37" Click="CloseAddBtn_Click" Width="128" Padding="10,0,10,0"></Button>
+                        <Button x:Name="ConfirmAddBtn" Content="Подтвердить" Margin="10,0,0,0" FontSize="15" Height="37" Width="128" Padding="10,0,10,0" Click="ConfirmAddBtn_Click"></Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right">
+            <StackPanel hc:Growl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>
+        </ScrollViewer>
+    </Grid>
+</Window>

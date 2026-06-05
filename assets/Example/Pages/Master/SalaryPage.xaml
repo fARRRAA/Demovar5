@@ -1,0 +1,136 @@
+﻿<Page x:Class="BeautySalonWpf.Pages.Master.SalaryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BeautySalonWpf.Pages.Master"
+      mc:Ignorable="d" 
+  d:DesignHeight="950" d:DesignWidth="1180"
+                        xmlns:hc="https://handyorg.github.io/handycontrol"
+
+  Title="Salary">
+
+    <Grid   Background="{DynamicResource BackgroundBrush}">
+        <StackPanel Margin="10,0,0,0">
+            <StackPanel Orientation="Horizontal" Margin="0,25,0,0">
+                <StackPanel>
+                    <hc:SearchBar x:Name="AppointmentSearchText" Height="35" FontSize="16" hc:InfoElement.ShowClearButton="True"  Width="600"  hc:InfoElement.Placeholder="Введите данные о записе" hc:InfoElement.TitlePlacement="Left" hc:InfoElement.Title="" Style="{StaticResource SearchBarPlus}" hc:InfoElement.Necessary="True" TextChanged="AppointmentSearchText_TextChanged"  />
+                    <hc:DatePicker x:Name="DateText" Margin="0,20,0,0" hc:InfoElement.ShowClearButton="True" Height="35" SelectedDateChanged="DateText_SelectedDateChanged"  FontSize="16"  hc:InfoElement.Placeholder="Введите дату" Width="600" HorizontalAlignment="Left"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Margin="50,0,0,0">
+                    <RadioButton x:Name="AllTImeRadioBtn" Margin="0,0,0,0" Content="За все время" Checked="AllTImeRadioBtn_Checked" PreviewMouseDown="IsCompletedBtn_PreviewMouseDown" HorizontalAlignment="Left"/>
+                    <RadioButton x:Name="TodayRadioBtn" Margin="0,16,0,0" Content="Сегодня" HorizontalAlignment="Left" Checked="TodayRadioBtn_Checked"/>
+                    <RadioButton x:Name="ThisMonthRadioBtn" Margin="0,16,0,0" Content="Текущий месяц" HorizontalAlignment="Left" Checked="ThisMonthRadioBtn_Checked"/>
+                </StackPanel>
+                <Button x:Name="CancelFiltersBtn" Content="Отменить фильтры" Style="{StaticResource ButtonDashedDanger}" VerticalAlignment="Top" Margin="20,0,0,0" Click="CancelFiltersBtn_Click" FontSize="10" Height="24" Width="112"/>
+            </StackPanel>
+            <StackPanel Height="639" >
+                <ListView Margin="0,25,0,0" x:Name="AppointmentsList" ItemsSource="{Binding _appointments}" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Height="560" Width="1130" HorizontalAlignment="Left">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding id}" Width="60" Header="id"/>
+                            <GridViewColumn Header="Клиент" Width="250">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,0">
+                                                <Image Source="/imgs/media/icons/barber-chair (1).png" Width="20" Height="20"/>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                                    <TextBlock Text="{Binding Clients.Lname}" Margin="5,0,0,0" HorizontalAlignment="Left"/>
+                                                    <TextBlock Text="{Binding Clients.FName}" Margin="5,0,0,0" HorizontalAlignment="Left"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="150" Header="Дата">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,0">
+                                                <Image Source="/imgs/media/icons/appointment.png" Width="20" Height="20"/>
+                                                <TextBlock Text="{Binding date,Converter={StaticResource DateConverter}}" Margin="5,0,0,0" HorizontalAlignment="Left"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Продолжительность" Width="200">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                                <Image Source="/imgs/media/icons/alarm-clock.png" Width="20" Height="20"/>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                                    <TextBlock Text="{Binding timeStart, Converter={StaticResource TimeSpanConverter}}" Margin="5,0,0,0" HorizontalAlignment="Left"/>
+                                                    <TextBlock Text="-" Margin="5,0,0,0" HorizontalAlignment="Left"/>
+                                                    <TextBlock Text="{Binding timeEnd, Converter={StaticResource TimeSpanConverter}}" Margin="5,0,0,0" HorizontalAlignment="Left"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="150" Header="Общая Стоимость">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,0">
+                                                <Image Source="/imgs/media/icons/coins-sec.png" Width="20" Height="20"/>
+                                                <TextBlock Text="{Binding totalSum,Converter={StaticResource DefaultPriceConverter}}" Margin="5,0,0,0" HorizontalAlignment="Left"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Masters.MastersSkills.rate}" Width="160" Header="Ставка"/>
+                            <GridViewColumn Width="150" Header="Доход">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,0">
+                                                <Image Source="/imgs/media/icons/coins-sec.png" Width="20" Height="20"/>
+                                                <TextBlock Margin="5,0,0,0" HorizontalAlignment="Left" Foreground="{DynamicResource TextBrush}">
+                                                    <TextBlock.Text>
+                                                        <MultiBinding Converter="{StaticResource PriceConverter}">
+                                                            <Binding Path="totalSum" />
+                                                            <Binding Path="Masters.MastersSkills.rate" />
+                                                        </MultiBinding>
+                                                    </TextBlock.Text>
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <hc:Pagination x:Name="paginationElem" MaxPageCount="10" PageIndex="1" PageUpdated="page_PageUpdated"  Margin="0,20,0,0"/>
+            </StackPanel>
+            <StackPanel Margin="0,20,0,0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <TextBlock Text="За сегодня"  TextWrapping="Wrap"  Margin="0,0,0,0" FontWeight="DemiBold"   Foreground="{DynamicResource TextBrush}" FontSize="20" HorizontalAlignment="Center" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Top"/>
+                <StackPanel Margin="250,0,0,0" Orientation="Horizontal" VerticalAlignment="Top" Height="36">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <Image Source="/imgs/media/icons/alarm-clock.png" Width="30" Height="30"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <TextBlock x:Name="TodayTimeWorked"  FontSize="20" Text="" Margin="5,0,0,0" HorizontalAlignment="Left" Foreground="{DynamicResource TextBrush}"/>
+
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Margin="250,0,0,0" Orientation="Horizontal" VerticalAlignment="Top">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,0">
+                        <Image Source="/imgs/media/icons/coins-sec.png" Width="30" Height="30" />
+                        <TextBlock x:Name="TodaySalaryEarned" Text="" FontSize="20" Margin="5,0,0,0" HorizontalAlignment="Left" Foreground="{DynamicResource TextBrush}"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right">
+            <StackPanel hc:Growl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>
+        </ScrollViewer>
+    </Grid>
+</Page>

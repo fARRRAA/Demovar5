@@ -1,0 +1,32 @@
+﻿<Page x:Class="BeautySalonWpf.Pages.SignUp"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BeautySalonWpf.Pages"
+            xmlns:hc="https://handyorg.github.io/handycontrol"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="700"
+      Title="SignUp" Background="#2B2B2D">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" Height="635">
+            <Label Content="Салон Красоты Зимняя вишня" Margin="0,0,0,0" Background="{x:Null}" FontWeight="DemiBold" BorderBrush="{x:Null}" Foreground="#FF99BE29" FontSize="22" Height="60" Width="344"/>
+            <Label Content="Регистрация" Margin="0,0,0,0" Background="{x:Null}" FontWeight="Medium" BorderBrush="{x:Null}" Foreground="#FF99BE29" FontSize="20" Height="39" Width="296"/>
+                <StackPanel Height="728" RenderTransformOrigin="0.487,0.625">
+                    <hc:TextBox x:Name="FNameTextUser" hc:InfoElement.ShowClearButton="True" Width="380" Height="42" FontSize="18" hc:InfoElement.TitleWidth="140" hc:InfoElement.Placeholder="Введите имя" hc:InfoElement.TitlePlacement="Top" hc:InfoElement.Necessary="True" Margin="0,16,0,0"/>
+                    <hc:TextBox x:Name="LNameTextUser" hc:InfoElement.ShowClearButton="True" Width="380" Height="42" FontSize="18" hc:InfoElement.TitleWidth="140" hc:InfoElement.Placeholder="Введите фамилию" hc:InfoElement.TitlePlacement="Top" hc:InfoElement.Necessary="True" Margin="0,16,0,0"/>
+                <hc:DatePicker x:Name="DateBirthText" hc:InfoElement.ShowClearButton="True" Height="42" FontSize="18" Margin="0,20,0,0" hc:InfoElement.Placeholder="Введите дату рождения"/>
+                <hc:TextBox x:Name="PhoneTextUser" MaxLength="12" hc:InfoElement.ShowClearButton="True" Width="380" Height="42" FontSize="18" hc:InfoElement.TitleWidth="140" hc:InfoElement.Placeholder="Введите номер телефона" hc:InfoElement.TitlePlacement="Top" hc:InfoElement.Necessary="True" Margin="0,16,0,0"/>
+                    <hc:TextBox x:Name="EmailTextUser" hc:InfoElement.ShowClearButton="True" Width="380" Height="42" FontSize="18" hc:InfoElement.TitleWidth="140" hc:InfoElement.Placeholder="Введите почту" hc:InfoElement.TitlePlacement="Top" hc:InfoElement.Necessary="True" Margin="0,16,0,0"/>
+                    <hc:TextBox x:Name="LoginTextUser" hc:InfoElement.ShowClearButton="True" Width="380" Height="42" FontSize="18" hc:InfoElement.TitleWidth="140" hc:InfoElement.Placeholder="Введите логин" hc:InfoElement.TitlePlacement="Top" hc:InfoElement.Necessary="True" Margin="0,16,0,0"/>
+                    <hc:PasswordBox x:Name="PasswordTextUser" ShowEyeButton="True" hc:InfoElement.Placeholder="Введите пароль" Height="42" FontSize="18" hc:InfoElement.Necessary="True" Margin="0,20,0,0"/>
+                    <Button x:Name="ResiterBtnUser" Content="Войти" Margin="0,20,0,0" Width="378" Height="46" FontSize="18" Foreground="#FF99BE29" FontWeight="Medium" Command="{Binding SuccessCmd}" Click="RegisterBtnUser_Click"/>
+                    <Button x:Name="AlreadyRegisteredUser"  Content="Уже есть аккаунт? Тогда войдите"  Margin="0,15,0,0" Background="{x:Null}" Foreground="#FF99BE29" BorderBrush="{x:Null}" Click="AlreadyRegistered_Click"/>
+                </StackPanel>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right">
+            <StackPanel hc:Growl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -1,0 +1,48 @@
+﻿<Page x:Class="BeautySalonWpf.Pages.Master.ClientPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BeautySalonWpf.Pages.Master"
+      xmlns:hc="https://handyorg.github.io/handycontrol"
+      mc:Ignorable="d" 
+      d:DesignHeight="950" d:DesignWidth="1180"
+      Title="ClientPage">
+    <StackPanel  Background="{DynamicResource BackgroundBrush}">
+        <StackPanel Margin="15,0,0,0">
+            <StackPanel HorizontalAlignment="Left">
+                <hc:SearchBar x:Name="ClientsSearchText" Height="35" FontSize="16" hc:InfoElement.ShowClearButton="True"  Width="600"  hc:InfoElement.Placeholder="Введите данные о клиенте" hc:InfoElement.TitlePlacement="Left" hc:InfoElement.Title="" Style="{StaticResource SearchBarPlus}" hc:InfoElement.Necessary="True" TextChanged="ClientsSearchText_TextChanged" Margin="0,25,0,0" />
+            </StackPanel>
+            <StackPanel >
+                 
+                <ListView Margin="0,25,0,0" x:Name="ClientsList" ItemsSource="{Binding clients}" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Height="624" Width="1000" HorizontalAlignment="Left">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding userID}" Width="60" Header="id"/>
+                            <!--<GridViewColumn Header="Фото" Width="100">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding photo}" Width="50" Height="50" Stretch="Uniform"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>-->
+                            <GridViewColumn DisplayMemberBinding="{Binding Lname}" Width="220" Header="Фамилия"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding FName}" Width="155" Header="Имя"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding phone}" Width="130" Header="Телефон"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding login}" Width="150" Header="Логин"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding visitsCount}" Width="140" Header="Кол-во посещений"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <hc:Pagination x:Name="paginationElem" MaxPageCount="10" PageIndex="1" PageUpdated="page_PageUpdated"  Margin="0,20,0,0"></hc:Pagination>
+            </StackPanel>
+            <StackPanel Margin="0,20,0,0" VerticalAlignment="Bottom" Orientation="Horizontal">
+                <Label x:Name="ClientsCountText" Content="Всего клиентов: " Margin="0,4,0,0" HorizontalAlignment="Left"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="700,0,0,0">
+                    <Button x:Name="redactClient" Content="изменить предпочтения" Margin="5" Style="{StaticResource ButtonWarning}" Click="redactClient_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+
+</Page>

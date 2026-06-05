@@ -1,0 +1,114 @@
+﻿<Page x:Class="BeautySalonWpf.Pages.Admin.Tabs.OrdersTab"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BeautySalonWpf.Pages.Admin.Tabs"
+      mc:Ignorable="d" 
+      d:DesignHeight="950" d:DesignWidth="1180"
+                       xmlns:hc="https://handyorg.github.io/handycontrol"
+
+ Title="Salary">
+
+    <Grid   Background="{DynamicResource BackgroundBrush}">
+        <StackPanel Margin="10,0,0,0">
+            <StackPanel Orientation="Horizontal" Margin="0,25,0,0">
+                <StackPanel>
+                    <hc:SearchBar x:Name="AppointmentSearchText" Height="35" FontSize="16" hc:InfoElement.ShowClearButton="True"  Width="600"  hc:InfoElement.Placeholder="Введите данные о записе" hc:InfoElement.TitlePlacement="Left" hc:InfoElement.Title="" Style="{StaticResource SearchBarPlus}" hc:InfoElement.Necessary="True" TextChanged="AppointmentSearchText_TextChanged"  />
+                    <hc:DatePicker x:Name="DateText" Margin="0,20,0,0" hc:InfoElement.ShowClearButton="True" Height="35" SelectedDateChanged="DateText_SelectedDateChanged"  FontSize="16"  hc:InfoElement.Placeholder="Введите дату" Width="600" HorizontalAlignment="Left"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Margin="50,0,0,0">
+                    <RadioButton x:Name="AllTImeRadioBtn" Margin="0,0,0,0" Content="За все время" Checked="AllTImeRadioBtn_Checked" PreviewMouseDown="IsCompletedBtn_PreviewMouseDown" HorizontalAlignment="Left"/>
+                    <RadioButton x:Name="TodayRadioBtn" Margin="0,16,0,0" Content="Сегодня" HorizontalAlignment="Left" Checked="TodayRadioBtn_Checked"/>
+                    <RadioButton x:Name="ThisMonthRadioBtn" Margin="0,16,0,0" Content="Текущий месяц" HorizontalAlignment="Left" Checked="ThisMonthRadioBtn_Checked"/>
+                </StackPanel>
+                <Button x:Name="CancelFiltersBtn" Content="Отменить фильтры" Style="{StaticResource ButtonDashedDanger}" VerticalAlignment="Top" Margin="20,0,0,0" Click="CancelFiltersBtn_Click" FontSize="10" Height="24" Width="112"/>
+            </StackPanel>
+            <StackPanel Height="639" >
+                <ListView Margin="0,25,0,0" x:Name="OrdersList" ItemsSource="{Binding _appointments}" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Height="560" Width="1158" HorizontalAlignment="Left" MouseDoubleClick="OrdersList_MouseDoubleClick">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding id}" Width="60" Header="id"/>
+                            <GridViewColumn Header="Клиент" Width="250">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,0">
+                                                <Image Source="/imgs/media/icons/barber-chair (1).png" Width="20" Height="20"/>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                                    <TextBlock Text="{Binding Clients.Lname}" Margin="5,0,0,0" HorizontalAlignment="Left"/>
+                                                    <TextBlock Text="{Binding Clients.FName}" Margin="5,0,0,0" HorizontalAlignment="Left"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="150" Header="Дата">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,0">
+                                                <Image Source="/imgs/media/icons/appointment.png" Width="20" Height="20"/>
+                                                <TextBlock Text="{Binding date,Converter={StaticResource DateConverter}}" Margin="5,0,0,0" HorizontalAlignment="Left"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Кол-во товаров" Width="150" DisplayMemberBinding="{Binding count}">
+                            </GridViewColumn>
+                            <GridViewColumn Width="150" Header="Сумма">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,0">
+                                                <Image Source="/imgs/media/icons/coins-sec.png" Width="20" Height="20"/>
+                                                <TextBlock Text="{Binding sum,Converter={StaticResource DefaultPriceConverter}}" Margin="5,0,0,0" HorizontalAlignment="Left"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn  Width="100" Header="Скидка">
+                                <GridViewColumn.DisplayMemberBinding>
+                                    <Binding Path="discount" StringFormat="{}{0}%"/>
+                                </GridViewColumn.DisplayMemberBinding>
+                            </GridViewColumn>
+                            <GridViewColumn  Width="150" Header="Сумма со скидкой">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,0">
+                                                <Image Source="/imgs/media/icons/coins-sec.png" Width="20" Height="20"/>
+                                                <TextBlock Text="{Binding discountSum,Converter={StaticResource DefaultPriceConverter}}" Margin="5,0,0,0" HorizontalAlignment="Left"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                    
+                            <GridViewColumn Header="Статус" Width="150" DisplayMemberBinding="{Binding OrderStatus.name}"/>
+
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <hc:Pagination x:Name="paginationElem" MaxPageCount="10" PageIndex="1" PageUpdated="page_PageUpdated"  Margin="0,20,0,0"/>
+               
+            </StackPanel>
+            <StackPanel Margin="0,20,30,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,0">
+                    <Button x:Name="updateProducts" Background="#FF676767" Click="updateProducts_Click" HorizontalAlignment="Left" Margin="0,0,20,0">
+                        <Image Source="/imgs/media/icons/refresh.png" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    </Button>
+                    <Button x:Name="DeleteOrder"         Content="Удалить заказ" Margin="5" Style="{StaticResource ButtonDanger}" Click="DeleteOrder_Click"/>
+                    <Button x:Name="RedactOrder" Content="редактировать" Margin="5" Style="{StaticResource ButtonWarning}" Click="RedactOrder_Click"/>
+                    <Button    x:Name="AddOrder"        Content="создать заказ" Margin="5" Style="{StaticResource ButtonInfo}" Click="AddOrder_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right">
+            <StackPanel hc:Growl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>
+        </ScrollViewer>
+    </Grid>
+</Page>

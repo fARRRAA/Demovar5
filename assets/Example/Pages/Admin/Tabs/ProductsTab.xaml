@@ -1,0 +1,53 @@
+﻿<Page x:Class="BeautySalonWpf.Pages.Admin.Tabs.ProductsTab"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+
+      xmlns:local="clr-namespace:BeautySalonWpf.Pages.Admin.Tabs"
+                        xmlns:hc="https://handyorg.github.io/handycontrol"
+
+      mc:Ignorable="d" 
+      d:DesignHeight="950" d:DesignWidth="1180"
+      Title="ProductsTab">
+
+    <StackPanel  Background="{DynamicResource BackgroundBrush}">
+        <StackPanel Margin="15,0,0,0">
+            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                <hc:SearchBar x:Name="ProductsSearchText" Height="35" FontSize="16" hc:InfoElement.ShowClearButton="True"  Width="600"  hc:InfoElement.Placeholder="Введите данные о товаре" hc:InfoElement.TitlePlacement="Left" hc:InfoElement.Title="" Style="{StaticResource SearchBarPlus}" hc:InfoElement.Necessary="True" TextChanged="ProductsSearchText_TextChanged" Margin="0,25,0,0" />
+                <hc:CheckComboBox x:Name="SelectProductTypes" hc:InfoElement.ShowClearButton="True" SelectionChanged="SelectProductTypes_SelectionChanged" FontSize="16" MaxWidth="380" ItemsSource="{Binding productTypes}" Style="{StaticResource CheckComboBoxPlus}" hc:InfoElement.Placeholder="Выберите категории" DataContextChanged="productTypes_DataContextChanged" Width="380" Height="35" VerticalAlignment="Bottom" Margin="50,0,0,0" />
+            </StackPanel>
+            <StackPanel >
+                <ListView Margin="0,25,0,0" x:Name="ProductsList" ItemsSource="{Binding products}" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Height="624" Width="1068" HorizontalAlignment="Left">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding productId}" Width="60" Header="id"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding name}" Width="280" Header="Название"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding price}" Width="155" Header="Цена"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding TypeProducts.name}" Width="170" Header="Категория"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding soldCount}" Width="150" Header="Продано"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding inStock}" Width="150" Header="В наличии"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <hc:Pagination x:Name="paginationElem" MaxPageCount="10" PageIndex="1" PageUpdated="page_PageUpdated"  Margin="0,20,0,0"></hc:Pagination>
+            </StackPanel>
+            <StackPanel Margin="0,20,0,0" VerticalAlignment="Bottom" Orientation="Horizontal">
+                <Label x:Name="ProductsCountText" Content="Всего товаров: " Margin="0,4,0,0" HorizontalAlignment="Left"/>
+                <StackPanel Orientation="Horizontal" Margin="480,0,0,0">
+                    <Button x:Name="updateProducts" Background="#FF676767" Click="updateProducts_Click" HorizontalAlignment="Left" Margin="0,0,20,0">
+                        <Image Source="/imgs/media/icons/refresh.png" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    </Button>
+                    <Button x:Name="deleteProduct" Content="Удалить товар" Margin="5" Style="{StaticResource ButtonDanger}" Click="deleteProduct_Click"/>
+                    <Button x:Name="redactProduct" Content="Отредактировать товар" Margin="5" Style="{StaticResource ButtonWarning}" Click="redactProduct_Click"/>
+                    <Button x:Name="addProduct" Content="Добавить товар" Margin="5" Style="{StaticResource ButtonInfo}" Click="addProduct_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right">
+            <StackPanel hc:Growl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>
+        </ScrollViewer>
+    </StackPanel>
+    
+</Page>

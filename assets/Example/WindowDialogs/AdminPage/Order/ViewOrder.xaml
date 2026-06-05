@@ -1,0 +1,62 @@
+﻿<Window x:Class="BeautySalonWpf.WindowDialogs.AdminPage.Order.ViewOrder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BeautySalonWpf.WindowDialogs.AdminPage.Order"
+        mc:Ignorable="d"
+        Title="Содержимое заказа" Height="600" Width="950"
+                               xmlns:hc="https://handyorg.github.io/handycontrol">
+    <Grid  Background="{DynamicResource BackgroundBrush}">
+        <StackPanel>
+            <StackPanel Margin="0,30,0,0" Orientation="Horizontal" >
+                <StackPanel Width="490" Margin="15,0,0,0" Height="454" VerticalAlignment="Top">
+                    <hc:TextBox  x:Name="ClientText" IsReadOnly="True" hc:InfoElement.ShowClearButton="True" Width="450" hc:InfoElement.Title="Клиент"  FontSize="16" Height="70" HorizontalAlignment="Left"  />
+                    <hc:TextBox  x:Name="DateText" IsReadOnly="True" hc:InfoElement.ShowClearButton="True" Width="450" hc:InfoElement.Title="Дата" Margin="0,25,0,0"  FontSize="16" Height="70" HorizontalAlignment="Left"  />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,25,0,0">
+                        <Image Source="/imgs/media/icons/boxes.png" Width="25" Height="25"/>
+                        <TextBlock x:Name="CountProductsText" Style="{StaticResource TextBlockSubTitle}" Margin="15,0,0,0" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,25,0,0">
+
+                        <Image Source="/imgs/media/icons/coins-sec.png" Width="25" Height="25"/>
+                        <TextBlock x:Name="totalPriceText" Style="{StaticResource TextBlockSubTitle}" Margin="15,0,0,0" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,25,0,0">
+                        <Image Source="/imgs/media/icons/discount.png" Width="25" Height="25"/>
+                        <TextBlock x:Name="DiscountText" Style="{StaticResource TextBlockSubTitle}" Margin="15,0,0,0" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,25,0,0">
+                        <Image Source="/imgs/media/icons/reduce-cost.png" Width="25" Height="25"/>
+                        <TextBlock x:Name="DiscountPriceText" Style="{StaticResource TextBlockSubTitle}" Margin="15,0,0,0" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Margin="0,0,15,0" VerticalAlignment="Top">
+                    <TextBlock Text="Выбранные товары" Style="{StaticResource TextBlockTitle}" HorizontalAlignment="Left" />
+                    <ListBox x:Name="SelectedProducts" Width="400" Margin="0,20,0,0" ItemsSource="{Binding _selectedServices}" Height="356"  HorizontalAlignment="Right" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                                    <TextBlock  Text="{Binding Products.name}" Style="{StaticResource TextBlockSubTitle}" HorizontalAlignment="Left"/>
+                                    <TextBlock  Text=":" Style="{StaticResource TextBlockSubTitle}" HorizontalAlignment="Left"/>
+                                    <TextBlock  Text="{Binding count}" Style="{StaticResource TextBlockSubTitle}" Margin="8,0,0,0" HorizontalAlignment="Left"/>
+                                    <TextBlock  Text="шт." Style="{StaticResource TextBlockSubTitle}" Margin="5,0,0,0" HorizontalAlignment="Left"/>
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Button x:Name="OrderPay" Content="Отметить оплаченным" Style="{StaticResource ButtonSuccess}" Margin="0,15,0,0" Width="212" HorizontalAlignment="Right" FontSize="16" Height="32" Click="CreateAppointmentButton_Click"/>
+                </StackPanel>
+
+            </StackPanel>
+            <StackPanel Margin="0,20,0,0">
+                <Button x:Name="CloseAddBtn" Content="Отмена" FontSize="15" Height="37" Click="CloseAddBtn_Click" Width="128" Padding="10,0,10,0"/>
+
+            </StackPanel>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right">
+            <StackPanel hc:Growl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>
+        </ScrollViewer>
+    </Grid>
+</Window>

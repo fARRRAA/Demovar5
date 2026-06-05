@@ -1,0 +1,25 @@
+<Window x:Class="BeautySalonWpf.WindowDialogs.Provider.AddProvider"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BeautySalonWpf.WindowDialogs.Provider"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="AddProvider" Height="400" Width="600">
+    <Grid  Background="{DynamicResource BackgroundBrush}">
+        <StackPanel Orientation="Vertical" Margin="30">
+            <hc:TextBox x:Name="NameText" hc:InfoElement.ShowClearButton="True" hc:InfoElement.Title="Название компании" Width="400" FontSize="16" Height="60" Margin="0,20,0,0" hc:InfoElement.Placeholder="Введите название компании" />
+            <hc:TextBox x:Name="PhoneText" hc:InfoElement.ShowClearButton="True" hc:InfoElement.Title="Телефон" Width="400" FontSize="16" Height="60" Margin="0,20,0,0" hc:InfoElement.Placeholder="Введите телефон" />
+            <hc:TextBox x:Name="INNText" hc:InfoElement.ShowClearButton="True" hc:InfoElement.Title="ИНН" Width="400" FontSize="16" Height="60" Margin="0,20,0,0" hc:InfoElement.Placeholder="Введите ИНН" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+                <Button x:Name="CloseAddBtn" Content="Отмена" FontSize="15" Height="37" Click="CloseAddBtn_Click" Width="128" Padding="10,0,10,0"/>
+                <Button x:Name="ConfirmAddBtn" Content="Подтвердить" Margin="10,0,0,0" FontSize="15" Height="37" Width="128" Padding="10,0,10,0" Click="ConfirmAddBtn_Click"/>
+            </StackPanel>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right">
+            <StackPanel hc:Growl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>
+        </ScrollViewer>
+    </Grid>
+</Window> 

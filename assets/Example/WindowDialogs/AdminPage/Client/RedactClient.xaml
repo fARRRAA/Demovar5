@@ -1,0 +1,39 @@
+﻿<Window x:Class="BeautySalonWpf.WindowDialogs.Client.RedactClient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BeautySalonWpf.WindowDialogs.Client"
+        mc:Ignorable="d"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        Title="RedactClient" Height="650" Width="850">
+    <Grid  Background="{DynamicResource BackgroundBrush}">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <StackPanel Margin="20,20,0,0">
+                <hc:TextBox x:Name="LNameText" hc:InfoElement.ShowClearButton="True" hc:InfoElement.Title="Фамилия" Width="250" FontSize="16" Height="70" Margin="0,20,0,0" hc:InfoElement.Placeholder="Введите фамилию" />
+                <hc:TextBox  x:Name="FNameText" hc:InfoElement.ShowClearButton="True" hc:InfoElement.Title="Имя" Width="250" FontSize="16" Height="70" Margin="0,20,0,0" hc:InfoElement.Placeholder="Введите имя" />
+                <hc:DatePicker x:Name="DateBirthText" hc:InfoElement.ShowClearButton="True" Height="70"  hc:InfoElement.Title="Дата рождения" FontSize="16" Margin="0,20,0,0" hc:InfoElement.Placeholder="Введите дату рождения"/>
+                <hc:TextBox x:Name="PhoneText" MaxLength="12" hc:InfoElement.ShowClearButton="True" Width="250" Height="70" FontSize="16" hc:InfoElement.Title="Номер телефона" Margin="0,20,0,0" hc:InfoElement.TitleWidth="140" hc:InfoElement.Placeholder="Введите номер телефона" hc:InfoElement.TitlePlacement="Top"/>
+                <hc:TextBox x:Name="PreferencesText" MaxLength="999" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" hc:InfoElement.ShowClearButton="True" Width="250" Height="160" FontSize="16" hc:InfoElement.Title="Предпочтения" Margin="0,20,0,0" hc:InfoElement.TitleWidth="140" hc:InfoElement.Placeholder="Пожелания клиента..." hc:InfoElement.TitlePlacement="Top"/>
+
+            </StackPanel>
+            <StackPanel Margin="20,20,0,0">
+                <StackPanel >
+                    <hc:TextBox  x:Name="EmailText" hc:InfoElement.ShowClearButton="True" hc:InfoElement.Title="Почта" Width="250" FontSize="16" Height="70" Margin="0,20,0,0" hc:InfoElement.Placeholder="Введите почту" />
+                    <hc:TextBox  x:Name="LoginText" hc:InfoElement.ShowClearButton="True" hc:InfoElement.Title="Логин" Width="250" FontSize="16" Height="70" Margin="0,20,0,0" hc:InfoElement.Placeholder="Введите логин" />
+                    <hc:PasswordBox x:Name="PasswordText" ShowEyeButton="True" hc:InfoElement.Placeholder="Введите пароль" Height="70" hc:InfoElement.Title="Пароль" FontSize="16" Margin="0,20,0,0" Width="250"/>
+
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,200,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="CloseAddBtn" Content="Отмена" FontSize="15" Height="37" Click="CloseAddBtn_Click" Width="128" Padding="10,0,10,0"></Button>
+                        <Button x:Name="ConfirmAddBtn" Content="Подтвердить" Margin="10,0,0,0" FontSize="15" Height="37" Width="128" Padding="10,0,10,0" Click="ConfirmAddBtn_Click"></Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right">
+            <StackPanel hc:Growl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>
+        </ScrollViewer>
+    </Grid>
+</Window>
